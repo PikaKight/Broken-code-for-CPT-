@@ -247,6 +247,8 @@ def movement():
         y+= yc
         Chr( x, y)
         pygame.display.update()
+        if x <= 38:
+            x *= -1
         timer.tick(30)
             
    
