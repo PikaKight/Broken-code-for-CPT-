@@ -246,9 +246,15 @@ def movement():
         x += xc
         y+= yc
         Chr( x, y)
-        pygame.display.update()
-        if x <= 38:
+        if x <= 34: #these if statement are for the boundry of the charcter, BTW the top left corner is (0,0)
             x *= -1
+        if  x >= 1170:
+            x *= -1
+        if  y <= 20:
+            y *= -1
+        if  y >= 570:
+            y *= -1        
+        pygame.display.update()
         timer.tick(30)
             
    
