@@ -256,10 +256,10 @@ def tutorial(): #starts the game and places the setting
        pygame.display.flip()
        movement()
 
-def movement():
-    x = 100
+def movement(): #this the movement 
+    x = 100 #location of the x and y axis of the character
     y = 100
-    xc = 0
+    xc = 0 #this is for the movement of the character
     yc = 0
     start = True
     while start:
@@ -267,29 +267,39 @@ def movement():
             if event.type == pygame.QUIT:
                 start = False
             if event.type == pygame.KEYDOWN:
-                if event.key == K_w:
-                    yc -= 2
+                if event.key == K_w: #when the play presses w, a, s, or d the character will move up(w) 5, left(a) 5, down(s) 5, and right(d) 5
+                    yc -= 5
                 if event.key == K_a:
-                    xc -= 2
+                    xc -= 5
                 if event.key == K_s:
-                    yc += 2
+                    yc += 5
                 if event.key == K_d:
-                    xc += 2
+                    xc += 5
+            if event.type == pygame.KEYUP: #when the user relase the key the character stops moving
+                if event.key == K_w:
+                    yc = 0
+                if event.key == K_a:
+                    xc = 0
+                if event.key == K_s:
+                    yc = 0
+                if event.key == K_d:
+                    xc = 0
                     
-        x += xc
+        x += xc #makes the character move by changing the location on the x and y axis
         y+= yc
+        screen.fill(colr) #updates the character location and the back ground
+        pygame.draw.rect(screen, recc, [25,25,1230, 630]) 
         Chr( x, y)
         if x <= 34: #these if statement are for the boundry of the charcter, BTW the top left corner is (0,0)
-            x *= -1
+            x *= -5
         if  x >= 1170:
-            x *= -1
+            x *= -5
         if  y <= 20:
-            y *= -1
+            y *= -5
         if  y >= 570:
-            y *= -1        
+            y *= -5        
         pygame.display.update()
         timer.tick(30)
-            
-   
+
 game()
 pygame.quit()   
